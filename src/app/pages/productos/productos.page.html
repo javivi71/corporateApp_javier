@@ -31,7 +31,8 @@
   <ion-col>
   <img [src]="product.foto" width="80">
   </ion-col>
-   <ion-col>{{product.disponible}}</ion-col>
+   <ion-col>{{ product.disponible | disponible }}</ion-col> 
+   <!-- <ion-col>{{ product.disponible ? 'Sí' : 'No' }}</ion-col> -->
 </ion-row>
 
 </ion-grid>

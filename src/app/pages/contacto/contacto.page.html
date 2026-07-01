@@ -22,4 +22,24 @@
 </ion-item>
 <ion-button (click)="enviar();"> Enviar </ion-button>
 
+
+<ion-button (click)="cargarUltimoMensaje();"> Cargar último mensaje </ion-button>
+
+<!-- Opcional: mostrar los datos cargados -->
+<ion-card *ngIf="enviado">
+  <ion-card-header>
+    <ion-card-title>Último mensaje guardado</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p><strong>Correo:</strong> {{ correo }}</p>
+    <p><strong>Mensaje:</strong> {{ mensaje }}</p>
+  </ion-card-content>
+</ion-card>
+
+<ion-card *ngIf="!enviado">
+  <ion-card-content>
+    <p>No hay mensajes guardados. Envía uno primero.</p>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
