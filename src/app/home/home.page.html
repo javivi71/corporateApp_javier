@@ -7,14 +7,24 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+    <!-- <ion-header collapse="condense"> -->
+    <ion-header >
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Corporate Page</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-segment>
+   <ion-segment-button routerLink="/productos">
+    <ion-label>Productos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button routerLink="/nosotros">
+    <ion-label>Nosotros</ion-label>
+  </ion-segment-button>
+     <ion-segment-button routerLink="/contacto">
+      <ion-label>Contacto</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
 </ion-content>
