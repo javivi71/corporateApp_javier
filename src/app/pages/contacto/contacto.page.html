@@ -10,7 +10,7 @@
       <ion-title size="large">contacto</ion-title>
     </ion-toolbar>
   </ion-header>
-
+<!--
   <ion-item>
     <ion-input [(ngModel)]="correo" name="correo" placeholder="Correo">
     </ion-input>
@@ -25,7 +25,7 @@
 
 <ion-button (click)="cargarUltimoMensaje();"> Cargar último mensaje </ion-button>
 
-<!-- Opcional: mostrar los datos cargados -->
+ Opcional: mostrar los datos cargados 
 <ion-card *ngIf="enviado">
   <ion-card-header>
     <ion-card-title>Último mensaje guardado</ion-card-title>
@@ -41,5 +41,32 @@
     <p>No hay mensajes guardados. Envía uno primero.</p>
   </ion-card-content>
 </ion-card>
+-->
+
+<ion-button (click)="guardar">
+  Probar servicio
+</ion-button>
+
+  <ion-button (click)="leer">
+    Probar leer mensaje
+  </ion-button>
+
+  <ion-button (click)="guardar">
+    Probar guardar
+  </ion-button>
+
+  <ion-item>
+    <ion-input name="correo" [(ngModel)]="correo"  placeholder="Correo">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+   <ion-textarea name="mensaje" [(ngModel)]="mensaje">
+   </ion-textarea>
+  </ion-item>
+
+ <ion-button (click)="enviar();"> 
+  Enviar 
+ </ion-button>
 
 </ion-content>

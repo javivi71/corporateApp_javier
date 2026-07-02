@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonInput, IonItem, IonTextarea, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Preferences } from '@capacitor/preferences';
+import { Messages } from 'src/app/services/messages';
 
 @Component({
   selector: 'app-contacto',
@@ -12,20 +13,10 @@ import { Preferences } from '@capacitor/preferences';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonItem,IonButton,IonTextarea,IonInput,IonCardContent,IonCardTitle,IonCardHeader,IonCard]
 })
 export class ContactoPage implements OnInit {
-correo:string = '';
-mensaje:string = '';
-enviado:boolean = false;
+ correo:string = '';
+ mensaje:string = '';
+ enviado:boolean = false;
 
-
-  async enviar() {
-     await Preferences.set({
-      key: 'ultimoMensaje',
-      value: JSON.stringify({
-          correo:this.correo,
-          mensaje:this.mensaje
-          })
-   });
-  }
 
 async cargarUltimoMensaje() {
   const resultado = await Preferences.get({ key: 'ultimoMensaje' });
@@ -39,9 +30,39 @@ async cargarUltimoMensaje() {
     console.log('No hay mensaje guardado');
   }
 }
-  constructor() { }
+
+
+
+  constructor(private servicio:Messages) { }
 
   ngOnInit() {
+  }
+
+  guardar(){
+    this.servicio.guardarMensaje(this.correo,this.mensaje);
+  }
+
+    leer(){
+    this.servicio.leerMensaje();
+  }
+
+  consultar(){
+    this.servicio.consultarPlataforma();
+  }
+
+  async enviar() {
+
+      /*
+     await Preferences.set({
+      key: 'ultimoMensaje',
+      value: JSON.stringify({
+          correo:this.correo,
+          mensaje:this.mensaje
+          })
+   });*/
+   console.log("enviar");
+   this.servicio.guardarMensaje(this.correo,this.mensaje);
+
   }
 
 }
