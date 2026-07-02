@@ -16,26 +16,16 @@ export class Messages {
       console.log("Estás en navegador");
       localStorage.setItem('correo',correo);
       localStorage.setItem('mensaje',mensaje);
-    } else {
-      console.log("Estás en mobile");
-      const dato = correo;
-      
-        const archivo = await Filesystem.readFile({
-        path:'mensaje.txt',
-        directory:Directory.Documents ,
-        encoding: Encoding.UTF8
-      });
-
-      archivo.data = dato;
-      console.log(archivo);
-
-      await Filesystem.writeFile({
-        path:'mensaje.txt',
-        directory:Directory.Documents ,
-        encoding: Encoding.UTF8,
-        data: dato        
-      });
-    }
+    } else  {
+    console.log("Estás en una plataforma móvil");
+    const dato = correo;
+    await Filesystem.writeFile({
+      path: 'mensaje.txt',
+      directory: Directory.Documents,
+      encoding: Encoding.UTF8,
+      data: dato
+    });
+  }
 
    } //guardarMensaje
    
