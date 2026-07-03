@@ -10,63 +10,83 @@
       <ion-title size="large">contacto</ion-title>
     </ion-toolbar>
   </ion-header>
-<!--
+
+  <!-- Sección de acciones -->
+  <ion-item lines="none">
+    <ion-label>Acciones</ion-label>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" (click)="consultar()" color="tertiary">
+          Consultar plataforma
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" (click)="guardar()" color="primary">
+          Guardar mensaje
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" (click)="leer()" color="success">
+          Leer mensaje
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Sección de campos -->
   <ion-item>
-    <ion-input [(ngModel)]="correo" name="correo" placeholder="Correo">
+    <ion-label position="floating">Correo</ion-label>
+    <ion-input name="correo" [(ngModel)]="correo" placeholder="Introduce tu correo">
     </ion-input>
   </ion-item>
 
   <ion-item>
-   <ion-textarea name="mensaje" [(ngModel)]="mensaje">
-</ion-textarea>
-</ion-item>
-<ion-button (click)="enviar();"> Enviar </ion-button>
-
-
-<ion-button (click)="cargarUltimoMensaje();"> Cargar último mensaje </ion-button>
-
- Opcional: mostrar los datos cargados 
-<ion-card *ngIf="enviado">
-  <ion-card-header>
-    <ion-card-title>Último mensaje guardado</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <p><strong>Correo:</strong> {{ correo }}</p>
-    <p><strong>Mensaje:</strong> {{ mensaje }}</p>
-  </ion-card-content>
-</ion-card>
-
-<ion-card *ngIf="!enviado">
-  <ion-card-content>
-    <p>No hay mensajes guardados. Envía uno primero.</p>
-  </ion-card-content>
-</ion-card>
--->
-
-<ion-button (click)="guardar">
-  Probar servicio
-</ion-button>
-
-  <ion-button (click)="leer">
-    Probar leer mensaje
-  </ion-button>
-
-  <ion-button (click)="guardar">
-    Probar guardar
-  </ion-button>
-
-  <ion-item>
-    <ion-input name="correo" [(ngModel)]="correo"  placeholder="Correo">
-    </ion-input>
+    <ion-label position="floating">Mensaje</ion-label>
+    <ion-textarea name="mensaje" [(ngModel)]="mensaje" placeholder="Escribe tu mensaje" rows="4">
+    </ion-textarea>
   </ion-item>
 
-  <ion-item>
-   <ion-textarea name="mensaje" [(ngModel)]="mensaje">
-   </ion-textarea>
+  <ion-button expand="full" (click)="enviar()" color="primary">
+    Enviar mensaje
+  </ion-button>
+
+  <!-- Sección de borrado -->
+  <ion-item lines="none">
+    <ion-label>Borrar datos (solo web)</ion-label>
   </ion-item>
 
- <ion-button (click)="enviar();"> 
-  Enviar 
- </ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" (click)="borrarCorreo()" color="warning">
+          Borrar correo
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" (click)="borrarMensaje()" color="warning">
+          Borrar mensaje
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" (click)="borrarTodo()" color="danger">
+          Borrar todo
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Mensaje de confirmación (opcional) -->
+  <ion-card *ngIf="enviado">
+    <ion-card-header>
+      <ion-card-title>✅ Mensaje guardado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Correo:</strong> {{ correo }}</p>
+      <p><strong>Mensaje:</strong> {{ mensaje }}</p>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
